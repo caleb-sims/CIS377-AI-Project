@@ -1,4 +1,3 @@
-# CIS377-AI-Project
 # Code Performance Improvement Plan
 
 **Idea:** Train a small **seq2seq** model (and compare to small decoder-only models) that turns a Python function into a faster version. Beat a large LLM on **latency** while staying competitive on **quality**.
