@@ -1,6 +1,6 @@
-from transformers import RobertaTokenizer, T5ForConditionalGeneration
+from transformers import AutoTokenizer, T5ForConditionalGeneration
 
-tokenizer = RobertaTokenizer.from_pretrained('Salesforce/codet5-small')
+tokenizer = AutoTokenizer.from_pretrained('Salesforce/codet5-small')
 model = T5ForConditionalGeneration.from_pretrained('Salesforce/codet5-small')
 
 text = "def greet(user): print(f'hello <extra_id_0>!')"
