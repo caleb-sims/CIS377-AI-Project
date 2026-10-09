@@ -1,4 +1,6 @@
 """
+WORK IN PROGRESS
+
 candidates.py - your hand-written slow/fast pairs. Add one dict per pair.
 
 Keys:

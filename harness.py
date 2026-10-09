@@ -1,4 +1,6 @@
 """
+WORK IN PROGRESS
+
 harness.py - run tests and time Python functions safely.
 
 Usage from your own code:

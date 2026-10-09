@@ -1,4 +1,6 @@
 """
+WORK IN PROGRESS
+
 verify_pairs.py - run every candidate pair through the harness.
 
   python verify_pairs.py

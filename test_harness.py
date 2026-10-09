@@ -1,3 +1,7 @@
+'''
+WORK IN PROGRESS
+'''
+
 from harness import evaluate, compare
 
 problem = {

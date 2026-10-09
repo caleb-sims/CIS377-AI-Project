@@ -18,3 +18,17 @@
 5. Measure per model: inference latency, percentage tests passed, median speedup, percentage correct and faster.
 6. Plot latency vs quality for all four.
 7. Create a Gradio GUI to demo your model vs the LLMs
+
+## Plan
+
+- Create a dataset with the MBPP function as the original function and a large LLM's function as the optimized function
+- Metrics: speed and memory.
+- Harness should block/discard answers that use more time and memory
+- Goal: Can a small model like T5 can compete with large LLMs like Claude, ChatGPT, and Gemini?
+
+## Progress
+
+- Implemented CodeT5 Model in main.py
+- Loaded dataset MBPP in load_data.py
+- Created harness, untested
+- verify_pairs.py currently checks if the model returns the same function as MBPP function
