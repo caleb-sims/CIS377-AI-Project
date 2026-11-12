@@ -1,0 +1,9 @@
+# Core dependencies for main.py, pytorch_train.py, and the dataset scripts.
+# Install with: pip install -r requirements.txt
+
+# Model, tokenizer, and training loop
+torch==2.14.1
+transformers==4.57.6
+
+# Used by the vectorization examples in dataset/ and when validating them.
+numpy==2.5.3
