@@ -400,7 +400,7 @@ Evaluation is deliberately conservative: an item only counts as valid if both th
 
 ### Prerequisite: model weights
 
-The fine-tuned checkpoint is **242 MB** and is **not stored in Git** (GitHub rejects files over 100 MB). The app needs this folder:
+The fine-tuned checkpoint is **242 MB** and is stored with GIT LFS (GitHub rejects files over 100 MB). The app needs this folder:
 
 ```text
 checkpoints/
@@ -415,15 +415,10 @@ checkpoints/
     └── merges.txt
 ```
 
-Get it in one of two ways:
-
-1. **Download the submitted `checkpoints/` folder** from the course LMS / project Google Drive link distributed with the assignment, and place it at the repository root so the path is `./checkpoints/best`. This is the fastest option.
-2. **Train it yourself** with the command in [How to train and validate](#how-to-train-and-validate). This produces both `checkpoints/best` and `checkpoints/final`.
-
-The test items are also required. Generate them with the data command above. Then confirm:
+The demo items are also required. Generate them with the data command above. Then confirm:
 
 ```bash
-ls checkpoints/best/model.safetensors data/test.jsonl
+ls checkpoints/best/model.safetensors data/demo.jsonl
 ```
 
 ### Launch
@@ -452,20 +447,20 @@ Open <http://127.0.0.1:7860> in a browser. The first start loads the model and r
 | Variable | Default | Meaning |
 |---|---|---|
 | `MODEL_DIR` | `./checkpoints/best` | Folder containing the fine-tuned model + tokenizer |
-| `TEST_PATH` | `./data/test.jsonl` | Held-out test items used by the dropdown |
+| `TEST_PATH` | `./data/demo.jsonl` | Held-out test items used by the dropdown |
 
 **Windows PowerShell:**
 
 ```powershell
 $env:MODEL_DIR = "checkpoints/final"
-$env:TEST_PATH = "data/test.jsonl"
+$env:TEST_PATH = "data/demo.jsonl"
 python app.py
 ```
 
 **macOS / Linux:**
 
 ```bash
-MODEL_DIR=checkpoints/final TEST_PATH=data/test.jsonl python app.py
+MODEL_DIR=checkpoints/final TEST_PATH=data/demo.jsonl python app.py
 ```
 
 To use a different port, set Gradio's standard variable:
@@ -571,4 +566,4 @@ Reduce `--batch-size` (e.g. 4 or 2), keep `--max-source-length`/`--max-target-le
 Use `--limit 20` for a smoke test. The full run executes Python code in subprocesses for 5,000 items and is expected to take a while.
 
 **Can I use the GUI for arbitrary functions?**
-Not safely. The bundled demo only offers functions from `data/test.jsonl`, because it executes generated code. Adding a free-text input would require a hardened sandbox.
+Not safely. The bundled demo only offers functions from `data/demo.jsonl`, because it executes generated code. Adding a free-text input would require a hardened sandbox.
