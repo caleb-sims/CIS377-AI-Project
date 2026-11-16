@@ -1,9 +1,24 @@
-# Core dependencies for main.py, pytorch_train.py, and the dataset scripts.
-# Install with: pip install -r requirements.txt
+# Python Code Optimizer - pinned runtime dependencies
+#
+# Tested on Python 3.14.6 (Windows 11, CPU-only) and known to work with
+# Python 3.11-3.14. Install from the repository root with:
+#
+#     python -m pip install -r requirements.txt
+#
+# For an NVIDIA CUDA or Apple Silicon (MPS) build of PyTorch, install the
+# matching torch wheel from https://pytorch.org/get-started/locally/ first.
+# pip will keep that build because the version below is already satisfied.
 
-# Model, tokenizer, and training loop
-torch==2.14.1
+# Deep learning + the CodeT5 model/tokenizer used by training and inference.
+torch==2.15.0
 transformers==4.57.6
+tokenizers==0.22.2
+safetensors==0.8.0
+huggingface-hub==0.36.2
 
-# Used by the vectorization examples in dataset/ and when validating them.
-numpy==2.5.3
+# Array operations used by the vectorization examples in dataset/.
+numpy==2.5.4
+
+# Browser GUI (app.py). Gradio 5.x is the newest line compatible with
+# transformers 4.x, which requires huggingface-hub < 1.0.
+gradio==5.50.0

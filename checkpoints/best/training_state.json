@@ -1,0 +1,77 @@
+{
+  "epoch": 10,
+  "val_loss": 0.00029939784085914394,
+  "args": {
+    "model": "Salesforce/codet5-small",
+    "train_file": "/content/drive/MyDrive/AI Project/data/train.jsonl",
+    "val_file": "/content/drive/MyDrive/AI Project/data/val.jsonl",
+    "checkpoint_dir": "/content/drive/MyDrive/AI Project/checkpoints",
+    "num_epochs": 10,
+    "batch_size": 8,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "max_grad_norm": 1.0,
+    "max_source_length": 256,
+    "max_target_length": 256,
+    "limit": 0,
+    "val_limit": 0,
+    "num_workers": 0,
+    "log_every": 50,
+    "device": "auto",
+    "seed": 42
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2102554542947594,
+      "val_loss": 0.2102554542947594
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0075593712056288495,
+      "val_loss": 0.0075593712056288495
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.004865812751057924,
+      "val_loss": 0.004865812751057924
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0036743630398813234,
+      "val_loss": 0.0036743630398813234
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.002502151882984825,
+      "val_loss": 0.002502151882984825
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0019067463264326632,
+      "val_loss": 0.0019067463264326632
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0013877161438219316,
+      "val_loss": 0.0013877161438219316
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0008190514991091082,
+      "val_loss": 0.0008190514991091082
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.000519929508063173,
+      "val_loss": 0.000519929508063173
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.00029939784085914394,
+      "val_loss": 0.00029939784085914394
+    }
+  ]
+}

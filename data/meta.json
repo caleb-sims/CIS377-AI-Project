@@ -1,0 +1,45 @@
+{
+  "name": "code-performance-optimization-synthetic",
+  "description": "Synthetic slow->fast Python function pairs (time and memory) for training a small seq2seq / decoder-only code model.",
+  "num_examples": 50000,
+  "num_train": 35000,
+  "num_val": 10000,
+  "num_test": 5000,
+  "seed": 42,
+  "val_fraction": 0.2,
+  "test_fraction": 0.1,
+  "curated_examples": 200,
+  "generator_families": 40,
+  "categories": {
+    "hashing": 6252,
+    "sorting": 6249,
+    "dynamic-programming": 6250,
+    "strings": 6252,
+    "memory": 6247,
+    "vectorization": 6247,
+    "math": 6248,
+    "loops": 6255
+  },
+  "fields": [
+    "id",
+    "name",
+    "category",
+    "technique",
+    "description",
+    "complexity_before",
+    "complexity_after",
+    "unoptimized",
+    "optimized",
+    "prompt",
+    "tests",
+    "benchmark"
+  ],
+  "notes": [
+    "seq2seq training: source=unoptimized, target=optimized.",
+    "decoder-only training: system=user=prompt, assistant=optimized.",
+    "train/val/test are disjoint and deterministically shuffled from meta.seed.",
+    "tests[].expected is a single value; tests[].acceptable (optional) lists multiple acceptable values when the answer is non-unique.",
+    "benchmark.args is a larger input used by the validation harness to measure original vs optimized speed and memory.",
+    "materialize_output=True means the result is a generator; compare list(result)."
+  ]
+}
