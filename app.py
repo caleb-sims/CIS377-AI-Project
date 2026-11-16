@@ -115,7 +115,7 @@ def load_items():
     if not os.path.isfile(path):
         raise SystemExit(f"Test file not found: {path}\nSet TEST_PATH or place test.jsonl next to app.py.")
     rows = []
-    with open(path, encoding="utf-8") as f:
+    with open(path, encoding="utf-8-sig") as f:
         for line in f:
             line = line.strip()
             if not line:
