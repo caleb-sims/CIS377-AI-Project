@@ -5,7 +5,6 @@ __pycache__/
 
 # Model uses best checkpoint 
 checkpoints/final/
-checkpoints/best/model.safetensors
 
 # Generated datasets (recreate with dataset/generate_dataset.py)
 data/all.jsonl
