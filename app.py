@@ -30,7 +30,7 @@ MODEL_DIR = os.environ.get("MODEL_DIR", "./checkpoints/best")
 TEST_PATH = os.environ.get("TEST_PATH", "./data/demo.jsonl")
 
 PREFIX = ""        # task prefix used during training, e.g. "optimize: " (leave "" if none)
-MAX_LEN = 512      # max input / output tokens
+MAX_LEN = 256      # max input / output tokens
 NUM_BEAMS = 4      # match the decoding settings you used for evaluation
 
 # Which test functions appear in the dropdown. Set DEMO_IDS to hand-pick

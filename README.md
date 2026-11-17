@@ -8,6 +8,36 @@ The project asks a simple question: **can a small seq2seq model beat a large LLM
 
 ---
 
+## To Install Project and Run Demo:
+
+### In Windows / Powershell
+
+```bash
+git clone https://github.com/caleb-sims/CIS377-AI-Project.git
+cd CIS377-AI-Project
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+git lfs install
+git lfs pull
+python app.py
+```
+
+### In macOS / Linux:
+
+```bash
+git clone https://github.com/caleb-sims/CIS377-AI-Project.git
+cd CIS377-AI-Project
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+git lfs install
+git lfs pull
+python app.py
+```
+
 ## Overview
 
 ### What problem does it solve?
@@ -415,15 +445,21 @@ checkpoints/
     └── merges.txt
 ```
 
-The demo items are also required. Generate them with the data command above. Then confirm:
+Confirm demo items:
 
 ```bash
+git lfs install
+git lfs pull  # to download model.safetensors
 ls checkpoints/best/model.safetensors data/demo.jsonl
 ```
 
 ### Launch
 
+Run these commands:
+
 ```bash
+git lfs install
+git lfs pull  # to download model.safetensors
 python app.py
 ```
 
@@ -567,3 +603,34 @@ Use `--limit 20` for a smoke test. The full run executes Python code in subproce
 
 **Can I use the GUI for arbitrary functions?**
 Not safely. The bundled demo only offers functions from `data/demo.jsonl`, because it executes generated code. Adding a free-text input would require a hardened sandbox.
+
+## Comparison Demo: Small Model vs. Claude
+
+`app_compare.py` is a second Gradio demo that puts the fine-tuned CodeT5 model head to head with a rewrite written by Claude. It shows the original function, the small model's live rewrite, and Claude's rewrite side by side, then scores all of them with the same tests and timing code used for the project's evaluation (`run_code` in `evaluate.py`).
+
+### What you can do
+- **Pick an example:** choose from 51 built-in slow functions (one per distinct function in `data/demo.jsonl`, memory category excluded).
+- **Paste your own:** enter a function, a few example calls (one per line), and a larger benchmark call. The original's outputs on the example calls are the expected answers. Inputs and outputs must be plain numbers, strings, lists, or dicts. Claude's rewrite is not available for pasted functions.
+- **Compare:** see each version's runtime, speedup, correctness, and lines of code, plus the small model's generation time.
+- **Head-to-head panel:** a collapsed section scores both models on all 51 examples, by category.
+
+### Install and launch
+Use the same environment as the main demo (`gradio`, `torch`, `transformers`). Run from the repo root so `evaluate.py` and `data/demo.jsonl` are found.
+
+```
+# one time: time Claude's answers on this computer (about a minute)
+python app_compare.py --score-claude
+
+# launch the demo, then open http://127.0.0.1:7861
+python app_compare.py
+```
+
+The `--score-claude` step stores the timings inside `app_compare.py`. If you skip it, the demo still works but scores Claude's code live each time.
+
+Optional settings (environment variables): `MODEL_DIR` (default `./checkpoints/best`), `DEMO_PATH` (default `./data/demo.jsonl`), and `EVAL_RESULTS` (default `./eval_results.json`). When `eval_results.json` is present, the head-to-head panel uses its stored small-model results.
+
+### Notes and limitations
+- **Claude's answers are pre-generated.** They were written once, from the original function only (not the tests or reference solution), and stored in `app_compare.py`. There are no live API calls, so no API key or internet connection is needed.
+- **Timings are machine-specific.** Speedups are measured live or in the `--score-claude` step on your computer and vary slightly between runs.
+- **The demo set is small.** It has 51 functions, so it illustrates behavior but is not a benchmark. On these examples the small model passes fewer tests than its full-evaluation score suggests, because most of the large test set consists of templated functions.
+- **Safety:** pasted code runs in a subprocess on your own machine. This is not a sandbox, so do not expose the app to the internet (no `share=True`).
